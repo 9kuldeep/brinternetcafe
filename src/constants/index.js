@@ -1,19 +1,18 @@
-import { 
-  people01, 
-  people02, 
-  people03, 
-  facebook, 
-  instagram, 
-  linkedin, 
-  twitter, 
-  airbnb, 
-  binance, 
-  coinbase, 
-  dropbox, 
-  send, 
-  shield, 
-  star
-} from "../assets";
+import { send, shield, star } from "../assets";
+import { businessContact, PHONE_NUMBER, WHATSAPP_NUMBER } from "../config/business";
+import { openWhatsApp } from "../utils/whatsapp";
+
+export { PHONE_NUMBER, WHATSAPP_NUMBER, openWhatsApp };
+
+export const businessInfo = {
+  name: "B.R Internet Cafe",
+  subtitle: "& Jan Seva Kendra",
+  phone: businessContact.phone,
+  whatsapp: businessContact.whatsapp,
+  address: businessContact.address,
+  hours: businessContact.hours,
+  mapsUrl: businessContact.mapsUrl,
+};
 
 export const navLinks = [
   {
@@ -22,15 +21,19 @@ export const navLinks = [
   },
   {
     id: "features",
-    title: "Features",
+    title: "Services",
   },
   {
-    id: "product",
-    title: "Product",
+    id: "about",
+    title: "About",
   },
   {
-    id: "clients",
-    title: "Clients",
+    id: "how-it-works",
+    title: "How It Works",
+  },
+  {
+    id: "contact",
+    title: "Contact",
   },
 ];
 
@@ -38,175 +41,61 @@ export const features = [
   {
     id: "feature-1",
     icon: star,
-    title: "Rewards",
-    content:
-      "The best credit cards offer some tantalizing combinations of promotions and prizes",
+    title: "Fast Service",
+    content: "Quick, careful support for everyday online and documentation needs.",
   },
   {
     id: "feature-2",
     icon: shield,
-    title: "100% Secured",
-    content:
-      "We take proactive steps make sure your information and transactions are secure.",
+    title: "Reliable Assistance",
+    content: "Clear guidance through forms, documents and digital applications.",
   },
   {
     id: "feature-3",
     icon: send,
-    title: "Balance Transfer",
-    content:
-      "A balance transfer credit card can save you a lot of money in interest charges.",
+    title: "Multiple Services",
+    content: "Government assistance, printing, bookings and more under one roof.",
   },
 ];
 
-export const feedback = [
-  {
-    id: "feedback-1",
-    content:
-      "Money is only a tool. It will take you wherever you wish, but it will not replace you as the driver.",
-    name: "Herman Jensen",
-    title: "Founder & Leader",
-    img: people01,
-  },
-  {
-    id: "feedback-2",
-    content:
-      "Money makes your life easier. If you're lucky to have it, you're lucky.",
-    name: "Steve Mark",
-    title: "Founder & Leader",
-    img: people02,
-  },
-  {
-    id: "feedback-3",
-    content:
-      "It is usually people in the money business, finance, and international trade that are really rich.",
-    name: "Kenn Gallagher",
-    title: "Founder & Leader",
-    img: people03,
-  },
+export const aboutTrustPoints = ["Multiple Services", "Quick Assistance", "Customer Friendly"];
+
+export const whyChooseUs = [
+  { id: "multiple-services", icon: star, title: "Multiple Services", content: "Access online applications, documentation, printing, booking and other digital services at one place." },
+  { id: "quick-assistance", icon: send, title: "Quick Assistance", content: "Get practical assistance with online forms, document preparation and digital applications." },
+  { id: "convenient", icon: shield, title: "Convenient", content: "Save time by getting multiple digital services handled at your nearby service center." },
+  { id: "customer-support", icon: star, title: "Customer Support", content: "Get clear guidance and assistance whenever you need help with a digital service." },
+];
+
+export const processSteps = [
+  { id: "choose", number: "01", title: "Choose Your Service", content: "Tell us what online or digital service you need." },
+  { id: "documents", number: "02", title: "Share Your Documents", content: "Provide the required documents or information for the selected service." },
+  { id: "complete", number: "03", title: "Get Your Work Done", content: "We assist you with the online process and help complete your service request." },
+];
+
+export const requestServices = [
+  "PAN Card Assistance", "Ayushman Card", "PM Kisan Services", "Ration Card Assistance", "Income Certificate", "Caste Certificate", "Residence/Domicile Certificate", "Scholarship Forms", "Online Form Filling", "Printout", "Photocopy", "Scanning", "Lamination", "Passport Photo", "Railway Ticket Booking", "Bus Ticket Booking", "Flight Ticket Booking", "LIC Assistance", "Insurance Assistance", "Driving Licence Assistance", "Other Digital Service",
+];
+
+export const serviceGroups = [
+  { id: "government", icon: "◎", title: "Government & Jan Seva Services", services: [["PAN Card Assistance", "Get help with online PAN application and documentation."], ["Ayushman Card", "Support with online application and document submission."], ["PM Kisan Services", "Online application support for PM Kisan services."], ["Ration Card Assistance", "Guidance for online ration card-related applications."], ["Income Certificate", "Assistance preparing and submitting the online form."], ["Caste Certificate", "Digital application support for certificate requests."], ["Residence / Domicile Certificate", "Help with online residence certificate applications."], ["Disability Certificate", "Support with the online application process."], ["Scholarship Forms", "Assistance filling scholarship forms accurately."], ["e-Shram Card", "Online registration and document assistance."], ["Labour Card", "Support with labour card applications and updates."], ["Voter ID Assistance", "Guidance for online voter ID services."]] },
+  { id: "documentation", icon: "▣", title: "Online & Documentation Services", services: [["Online Form Filling", "Careful assistance with online applications."], ["Document Upload", "Upload documents to the correct online portal."], ["Printout", "Clear black-and-white or colour printouts."], ["Photocopy", "Quick copies for forms and everyday needs."], ["Scanning", "Digital scans ready to share or submit."], ["Lamination", "Protect important documents with lamination."], ["Passport Size Photo", "Convenient passport-size photo service."], ["Photo & Signature Resize", "Resize files to meet online form requirements."], ["Document Formatting", "Neat formatting for digital documents."], ["Resume / CV Making", "Simple, professional resume preparation."]] },
+  { id: "booking", icon: "◫", title: "Ticket & Booking Services", services: [["Railway Ticket Booking", "Assistance with online railway ticket bookings."], ["Bus Ticket Booking", "Find and book bus travel online."], ["Flight Ticket Booking", "Support comparing and booking flight tickets."]] },
+  { id: "other", icon: "◌", title: "Financial & Other Services", services: [["LIC Assistance", "Digital assistance for LIC-related services."], ["Insurance Assistance", "Support with online insurance-related processes."], ["Driving Licence Assistance", "Guidance for online licence applications."], ["Online Application Assistance", "Help navigating other online applications."], ["Other Digital Services", "Ask us about a service not listed here."]] },
 ];
 
 export const stats = [
-  {
-    id: "stats-1",
-    title: "User Active",
-    value: "3800+",
-  },
-  {
-    id: "stats-2",
-    title: "Trusted by Company",
-    value: "230+",
-  },
-  {
-    id: "stats-3",
-    title: "Transaction",
-    value: "$230M+",
-  },
+  { id: "stats-1", title: "Service categories", value: "04" },
+  { id: "stats-2", title: "Everyday support", value: "01" },
+  { id: "stats-3", title: "Helpful team", value: "24/7" },
 ];
 
 export const footerLinks = [
-  {
-    title: "Useful Links",
-    links: [
-      {
-        name: "Content",
-        link: "https://www.hoobank.com/content/",
-      },
-      {
-        name: "How it Works",
-        link: "https://www.hoobank.com/how-it-works/",
-      },
-      {
-        name: "Create",
-        link: "https://www.hoobank.com/create/",
-      },
-      {
-        name: "Explore",
-        link: "https://www.hoobank.com/explore/",
-      },
-      {
-        name: "Terms & Services",
-        link: "https://www.hoobank.com/terms-and-services/",
-      },
-    ],
-  },
-  {
-    title: "Community",
-    links: [
-      {
-        name: "Help Center",
-        link: "https://www.hoobank.com/help-center/",
-      },
-      {
-        name: "Partners",
-        link: "https://www.hoobank.com/partners/",
-      },
-      {
-        name: "Suggestions",
-        link: "https://www.hoobank.com/suggestions/",
-      },
-      {
-        name: "Blog",
-        link: "https://www.hoobank.com/blog/",
-      },
-      {
-        name: "Newsletters",
-        link: "https://www.hoobank.com/newsletters/",
-      },
-    ],
-  },
-  {
-    title: "Partner",
-    links: [
-      {
-        name: "Our Partner",
-        link: "https://www.hoobank.com/our-partner/",
-      },
-      {
-        name: "Become a Partner",
-        link: "https://www.hoobank.com/become-a-partner/",
-      },
-    ],
-  },
+  { title: "Explore", links: [{ name: "Services", link: "#features" }, { name: "About Us", link: "#about" }, { name: "How It Works", link: "#how-it-works" }] },
+  { title: "Get In Touch", links: [{ name: "Contact", link: "#contact" }, { name: "WhatsApp", link: "#whatsapp" }] },
 ];
 
-export const socialMedia = [
-  {
-    id: "social-media-1",
-    icon: instagram,
-    link: "https://www.instagram.com/",
-  },
-  {
-    id: "social-media-2",
-    icon: facebook,
-    link: "https://www.facebook.com/",
-  },
-  {
-    id: "social-media-3",
-    icon: twitter,
-    link: "https://www.twitter.com/",
-  },
-  {
-    id: "social-media-4",
-    icon: linkedin,
-    link: "https://www.linkedin.com/",
-  },
-];
-
-export const clients = [
-  {
-    id: "client-1",
-    logo: airbnb,
-  },
-  {
-    id: "client-2",
-    logo: binance,
-  },
-  {
-    id: "client-3",
-    logo: coinbase,
-  },
-  {
-    id: "client-4",
-    logo: dropbox,
-  },
-];
+// Kept for compatibility with the starter component barrel.
+export const clients = [];
+export const socialMedia = [];
+export const feedback = [];

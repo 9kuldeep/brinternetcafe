@@ -1,46 +1,36 @@
-import React from 'react'
-import { features } from '../constants'
-import styles, { layout } from '../style'
-import Button from './Button'
+import React, { useState } from 'react'
+import { openWhatsApp, serviceGroups } from '../constants'
+import styles from '../style'
 
-const FeatureCard = ({ icon, title, content, index }) => (
-  <div className={`flex flex-row p-6 rounded-[20px] ${index !== features.length - 1 ? 'mb-6' : 'mb-0'} feature-card`}>
-    <div className={`w-[64px] h-[64px] rounded-full ${styles.flexCenter} bg-dimBlue`}>
-      <img
-        src={icon}
-        alt='icon'
-        className='w-[50%] h-[50%] object-contain'
-      />
-    </div>
-    <div className='flex-1 flex flex-col ml-3'>
-      <h4 className='font-poppins font-semibold text-white text-[18px] leading-[23px] mb-1'>
-        {title}
-      </h4>
-      <p className='font-poppins font-normal text-dimWhite text-[16px] leading-[24px]'>
-        {content}
-      </p>
-    </div>
-  </div>
+const ServiceCard = ({ name, description }) => (
+  <article className='service-item'>
+    <div className='service-item-icon' aria-hidden='true'>+</div>
+    <div className='service-item-copy'><h4>{name}</h4><p>{description}</p></div>
+    <a className='service-assistance' href={openWhatsApp(`Hello, I need assistance with ${name}.`)} aria-label={`Get assistance with ${name}`}>Get Assistance <span>↗</span></a>
+  </article>
 )
 
-const Business = () => {
+const ServiceCategory = ({ group, expanded, onToggle }) => {
+  const visibleServices = expanded ? group.services : group.services.slice(0, 6)
+  const hasMore = group.services.length > 6
+
   return (
-    <section id='features' className={layout.section}>
-      <div className={layout.sectionInfo}>
-        <h2 className={styles.heading2}>You do the business, <br className='sm:block hidden'/>we'll handle the money.</h2>
-        <p className={`${styles.paragraph} max-w-[470px] mt-5`}>
-          With the right credit card, 
-          you can improve your financial life by building credit,
-          earning rewards and saving money.
-          But with hundreds of credit cards on the market.
-        </p>
-        <Button styles='mt-10'/>
-      </div>
-      <div className={`${layout.sectionImg} flex-col`}>
-        {features.map((feature, index) => (
-          <FeatureCard key={feature.id} {...feature} index={index}/>
-        ))}
-      </div>
+    <article className='service-category'>
+      <div className='service-category-heading'><div className='service-category-icon' aria-hidden='true'>{group.icon}</div><div><span className='service-category-label'>SERVICE CATEGORY</span><h3>{group.title}</h3></div></div>
+      <div className='service-items'>{visibleServices.map(([name, description]) => <ServiceCard key={name} name={name} description={description} />)}</div>
+      {hasMore && <button type='button' className='service-expand' onClick={onToggle}>{expanded ? 'Show Less' : `View All ${group.services.length} Services`} <span>{expanded ? '↑' : '↓'}</span></button>}
+    </article>
+  )
+}
+
+const Business = () => {
+  const [expandedCategory, setExpandedCategory] = useState(null)
+
+  return (
+    <section id='features' className={`${styles.paddingY} section-light`}>
+      <div className='section-heading'><div><p className='section-label'>Our Services</p><h2 className='light-heading'>Everything You Need,<br/>Under One Roof</h2></div><p className='light-paragraph max-w-[500px]'>From online applications and government service assistance to printing, documentation and ticket booking, get your digital work done conveniently.</p></div>
+      <div className='service-categories'>{serviceGroups.map((group) => <ServiceCategory key={group.id} group={group} expanded={expandedCategory === group.id} onToggle={() => setExpandedCategory(expandedCategory === group.id ? null : group.id)} />)}</div>
+      <div className='service-trust'><div><strong>Need a service that isn't listed here?</strong><span>Contact us and we'll help you find the right online service.</span></div><a className='primary-button' href={openWhatsApp("Hello, I need help finding an online service.")}>WhatsApp Us <span>↗</span></a></div>
     </section>
   )
 }

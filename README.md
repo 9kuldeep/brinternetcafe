@@ -1,30 +1,52 @@
-# HooBank - Business Website Template
+# B.R Internet Cafe & Jan Seva Kendra
 
-Modern responsive business website design made with React and Tailwind CSS.
+A responsive React, Vite, and Tailwind CSS website for local digital service assistance.
 
-⚠️ **All names, information and assets used are fake and do not represent a real componany.** ⚠️
+## Setup
 
-Live demo can be found under this [**link**](https://business-website-template.onrender.com/).
+Install dependencies:
 
-![image](https://user-images.githubusercontent.com/72783924/222011304-859783c2-3a38-47b6-9427-d323f01d0fba.png)
+```bash
+npm install
+```
 
+Start the development server:
 
-## Layout
-- Header
-- Hero section
-- Features section
-- Billing section
-- Product showcase section
-- Testimonials section
-- Clients section
-- Call to action section
-- Footer
+```bash
+npm run dev
+```
 
-## Built With
-- React.js
-- Tailwind CSS
-- Vite
+Build for production:
 
-## Acknowledgments
-- [**Original Figma Design**](https://www.figma.com/file/bUGIPys15E78w9bs1l4tgS/HooBank?node-id=310%3A485&t=Jkk7MU9hZJ5HoVph-0)
-- [**JavaScript Mastery video**](https://youtu.be/_oO4Qi5aVZs)
+```bash
+npm run build
+```
+
+Preview the production build locally:
+
+```bash
+npm run preview
+```
+
+## Business Information
+
+Copy `.env.example` to `.env.local` for deployment-specific values, then update the values there. The fallback placeholders and configuration mapping are in [src/config/business.js](src/config/business.js).
+
+Required business details:
+
+- Phone number
+- WhatsApp number
+- Exact shop address
+- Opening hours
+- Google Maps URL
+- Optional Google Maps embed URL
+
+No customer information is sent to a backend or stored by this frontend. Service requests are formatted locally and opened in WhatsApp.
+
+## Brand Assets
+
+Replace the logo at `public/images/br-logo.svg`. The favicon is at `public/images/favicon.svg`. Add approved shop photos to `public/images/` if a gallery is added later; no business photos are included until real images are supplied.
+
+## Deployment
+
+This is a static Vite site and is suitable for Vercel, Netlify, or GitHub Pages. Use the repository root as the project directory, `npm run build` as the build command, and `dist` as the publish directory. Set the `VITE_*` values from `.env.example` in the hosting provider's environment settings. Never commit `.env.local` or real credentials.

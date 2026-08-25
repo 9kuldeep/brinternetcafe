@@ -1,43 +1,32 @@
 import React from 'react'
-import { 
-  Billing, 
-  Business, 
-  CardDeal, 
-  Clients, 
-  CTA, 
-  Footer, 
-  Hero, 
-  Navbar, 
-  Stats, 
-  Testimonials 
-} from './components'
+import { Billing, Business, CardDeal, CTA, Footer, Hero, LocalBusinessSchema, Navbar, ServiceRequestForm, WhyChooseUs } from './components'
 import styles from './style'
 
 const App = () => {
   return (
-    <div className='bg-primary w-full overflow-hidden'>
-      <div className={`${styles.paddingX} ${styles.flexCenter}`}>
+    <div className='site-shell w-full overflow-hidden'>
+      <LocalBusinessSchema />
+      <div className={`${styles.paddingX} ${styles.flexCenter} nav-wrap site-header`}>
         <div className={`${styles.boxWidth}`}>
           <Navbar/>
         </div>
       </div>
-      <div className={`bg-primary ${styles.flexStart}`}>
+      <div className={`hero-wrap ${styles.flexStart}`}>
         <div className={`${styles.boxWidth}`}>
           <Hero/>      
         </div>
       </div>
-      <div className={`bg-primary ${styles.paddingX} ${styles.flexStart}`}>
+      <main className={`${styles.paddingX} ${styles.flexStart}`}>
         <div className={`${styles.boxWidth}`}>
-          <Stats/>
           <Business/>
           <Billing/>
+          <WhyChooseUs/>
           <CardDeal/>
-          <Testimonials/>
-          <Clients/>
+          <ServiceRequestForm/>
           <CTA/>
           <Footer/>     
         </div>
-      </div>
+      </main>
     </div>
   )
 }

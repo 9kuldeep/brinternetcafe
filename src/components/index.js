@@ -1,25 +1,27 @@
 import Billing from './Billing'
 import Business from './Business'
 import CardDeal from './CardDeal'
-import Clients from './Clients'
 import CTA from './CTA'
-import Feedback from './Feedback'
 import Footer from './Footer'
 import Hero from './Hero'
 import Navbar from './Navbar'
-import Stats from './Stats'
-import Testimonials from './Testimonials'
+import ContactCard from './ContactCard'
+import ServiceRequestForm from './ServiceRequestForm'
+import WhatsAppButton from './WhatsAppButton'
+import WhyChooseUs from './WhyChooseUs'
+import LocalBusinessSchema from './LocalBusinessSchema'
 
 export {
     Billing,
     Business,
     CardDeal,
-    Clients,
     CTA,
-    Feedback,
     Footer,
     Hero,
     Navbar,
-    Stats,
-    Testimonials
+    ContactCard,
+    ServiceRequestForm,
+    WhatsAppButton,
+    WhyChooseUs,
+    LocalBusinessSchema
 }
